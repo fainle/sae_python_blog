@@ -1,9 +1,4 @@
 import sae
-
-def app(environ, start_response):
-    status = '200 OK'
-    response_headers = [('Content-type', 'text/html; charset=utf-8')]
-    start_response(status, response_headers)
-    return ['<strong>Welcome to SAE! this is a python page</strong>']
+from myapp import app
 
 application = sae.create_wsgi_app(app)
