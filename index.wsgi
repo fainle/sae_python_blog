@@ -1,5 +1,5 @@
 import sae
-from index import app
+from myapp import app
 from about import app2
 
 application = sae.create_wsgi_app(app)
