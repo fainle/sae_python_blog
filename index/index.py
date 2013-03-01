@@ -1,7 +1,4 @@
-from flask import Flask, g ,request
-
-app = Flask(__name__)
-app.debug = True
+from myapp import app
 
 @app.route('/index')
 def hello():
