@@ -1,0 +1,62 @@
+body{
+	background: none repeat scroll 0 0 #EDEFF5;
+}
+
+.conl{
+    min-height: 800px;
+    padding: 10px 20px 20px 20px;
+}
+
+.conr{
+	padding: 10px 20px 20px 20px;
+	margin-bottom: 20px;
+}
+
+.basediv{
+	border-radius: 2px 2px 2px 2px;
+	background: none repeat scroll 0 0 #FFFFFF;
+	box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.1);	
+}
+
+.titleBar {
+    border-bottom: 2px solid #F7F7F7;
+    vertical-align: bottom;
+    margin-bottom: 10px;
+}
+
+.titleBar h4 {
+    border-bottom: 2px solid #F73E3E;
+    bottom: -2px;
+    float: left;
+    font-size: 14px;
+    padding-bottom: 5px;
+    padding-right: 2px;
+    position: relative;
+    white-space: nowrap;
+    margin:0;
+}
+
+.titleBar:after, .titleBar-chose:after, .tabBar:after, .poplayer-letter-ft:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.line{
+    border-bottom: 1px solid #EEEEEE;
+    margin: 25px 0 30px 0;
+}
+
+.text-sd {
+    margin: 0 20px 0 0
+}
+
+.h50{
+    height: 50px;
+}
+
+.h100{
+    height: 100px;
+}
