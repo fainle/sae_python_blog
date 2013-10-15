@@ -1,9 +1,11 @@
-import sae
+import os
+import sys
 
-def app(environ, start_response):
-    status = '200 OK'
-    response_headers = [('Content-type', 'text/html; charset=utf-8')]
-    start_response(status, response_headers)
-    return ['<strong>Welcome to SAE!</strong>']
+root = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(root, 'site-packages'))
+
+import sae
+import wtforms
+from webapp import app
 
 application = sae.create_wsgi_app(app)
