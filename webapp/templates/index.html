@@ -4,94 +4,9 @@
 <div class="row">
   <div class="span8">
     <div class="conl basediv">
-      {% for t in topic%}
-      <h4><a href="/topic/{{ t.id }}">{{ t.title }}</a></h4>
-      <p class="muted">
-        <small class="text-sd">分类：<a href="/category/{{ t.category_id }}">{{ category.get(t.category_id).name }}</a></small>
-        <small class="text-sd">浏览：{{ count.get(t.id).views }}</small>
-        <small class="text-sd">回复：{{ count.get(t.id).reply_num }}</small>
-        <small class="text-sd">发布：{{ t.created_at }}</small></p>
-      
-      <div class="media">
-        {% if t.content |get_first_pic %}
-        <a class="pull-right" href="/topic/{{ t.id }}">
-          <img class="pull-right" {{ t.content| get_first_pic | safe }} width="200" highe="200" />
-        </a>
-        {% endif %}
-        <div class="media-body">
-          <p class="">{{ t.content | striptags | truncate(200, False, '......') }} 
-        </div>
-      </div>
-      </p>
-     
-      <div class="clearfix"></div>
-      <p><i class="icon-tags"></i>
-        {% for tagname in t.tag|string_split %}
-          <a href="/tag/{{ tagname }}">{{ tagname }}</a>
-        {% endfor %}
-      </p>
-      <p><a href="/topic/{{ t.id }}">查看 ({{ t.content | length }})</a></p>
-      <div class="line"></div>
-      {% endfor %}
-      <!-- pagination -->
-      <div class="pagination pagination-centered">
-        <ul>
-          {% if pag.page - 5 > 1 %}
-            <li><a href="/1">1</a></li>
-            {% if pag.page - 5 != 2 %}
-            <li class="disabled"><span>...</span></li>
-            {% endif %}
-          {% endif %}  
-          {% for p in pag.num_page() %}
-            {% if p == pag.page %}
-              <li class="active"><a href="/{{ p }}">{{ p }}</a></li>
-            {% else %}
-              <li><a href="/{{ p }}">{{ p }}</a></li>
-            {% endif %}  
-          {% endfor %}
-          {% if pag.page_total - 5 > pag.page and pag.page_total > 10%}
-            <li class="disabled"><span>...</span></li>
-            <li class=""><a href="/{{ pag.page_total }}">{{ pag.page_total }}</a></li>
-          {% endif %}  
-        </ul>
-      </div>
-      <!--/pagination -->
     </div>  
   </div>
   <div class="span4">
-
-    <div class="conr basediv">
-      <div class="titleBar">
-        <h4>分类</h4>
-      </div>
-      <ul class="unstyled">
-        {% for c in g.category%}
-        <li><a href="/category/{{ c.id }}">{{ c.name }} ({{ c.num }})</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-
-    <div class="conr basediv">
-      <div class="titleBar">
-        <h4>最新文章</h4>
-      </div>
-      <ol>
-        {% for t in topic%}
-        <li><a href="/topic/{{ t.id }}">{{ t.title }}</a></li>
-        {% endfor %}
-      </ol>
-    </div>
-
-    <div class="conr basediv">
-      <div class="titleBar">
-        <h4>标签</h4>
-      </div>
-      <ul class="unstyled">
-        {% for t in tag %}
-        <li><a href="/tag/{{ t.name }}">{{ t.name }}({{ t.num }})</a></li>
-        {% endfor %}
-      </ul>
-    </div>
   </div>
 </div>
 {% endblock%}
