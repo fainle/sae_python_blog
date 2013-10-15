@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>{% block title %}{% endblock %} - Fainle blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="fainle's blog">
+<meta name="author" content="hehehas@gmail.com">
+<meta name="keywords" content="python,golang,linux,fainle">
+<!-- Le styles -->
+{% include '/common/basecss.html' %}
+{% block css %}
+{% endblock %}
+{% include '/common/basejs.html' %}
+</head>
+  <body>
+  	{% include '/common/top.html' %}
+    <div class="container">
+      <!-- Example row of columns -->
+      {% block content %}
+      {% endblock %}
+      <hr>
+    </div> <!-- /container -->
+    {% include '/common/footer.html' %}  
+  </body>
+</html>
+{% block js %}
+{% endblock %}
