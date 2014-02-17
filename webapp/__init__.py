@@ -34,17 +34,17 @@ app.register_blueprint(main_page)
 #app before request Category
 @app.before_request
 def before_request():
-	if 'user_id' in session:
-		g.user_id = session['user_id']
-		g.nickname = session['nickname']
-	else:
-		g.user_id = None
-		g.nickname = None
+    if 'user_id' in session:
+        g.user_id = session['user_id']
+        g.nickname = session['nickname']
+    else:
+        g.user_id = None
+        g.nickname = None
 
 
 #app teardown request
 @app.teardown_request
 def shutdown_session(exception=None):
-	return
-	#db_session.rollback()
-	#db_session.close()
+    return
+    #db_session.rollback()
+    #db_session.close()
