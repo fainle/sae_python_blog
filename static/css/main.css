@@ -20,3 +20,15 @@
     width: 940px;
 }
 
+.logo-container {
+    padding: 19px 0;
+}
+
+.main-nav {
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+    display: block;
+}
