@@ -32,3 +32,14 @@
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
     display: block;
 }
+
+a {
+    color: #3B4348;
+}
+
+span.tag-line {
+    color: #818A90;
+    font-size: 12px;
+    position: relative;
+    top: 2px;
+}
