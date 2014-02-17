@@ -43,3 +43,8 @@ span.tag-line {
     position: relative;
     top: 2px;
 }
+
+.main-nav div > ul {
+    margin: 0;
+    width: auto;
+}
