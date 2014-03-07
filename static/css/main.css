@@ -148,17 +148,3 @@ body {
 }
 
 
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
-
-.container1 {
-  width: auto;
-  max-width: 680px;
-  padding: 0 15px;
-}
-.container1 .text-muted {
-  margin: 20px 0;
-}
-
-
