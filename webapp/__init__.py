@@ -3,11 +3,11 @@ from flask import Flask, g, session
 import wtforms
 #from log.mydb.db import db_page
 from webapp.main.views import main_page
-#from log.user.views import user_page
+from webapp.topic.views import topic_page
 #from log.admin.views import admin_page
 #from log.topic.views import topic_page
 #from log.upload.views import upload_page
-#from domain import db_session
+from domain import db_session
 #from domain.model.user import User
 #from util.filter import register_jinja_filter
 
@@ -20,7 +20,7 @@ app.config.from_envvar('SETTING', silent=True)
 
 #register blueprint
 app.register_blueprint(main_page)
-#app.register_blueprint(db_page)
+app.register_blueprint(topic_page)
 #app.register_blueprint(user_page)
 #app.register_blueprint(admin_page)
 #app.register_blueprint(topic_page)
@@ -34,6 +34,9 @@ app.register_blueprint(main_page)
 #app before request Category
 @app.before_request
 def before_request():
+    """
+    before request
+    """
     if 'user_id' in session:
         g.user_id = session['user_id']
         g.nickname = session['nickname']
@@ -45,6 +48,8 @@ def before_request():
 #app teardown request
 @app.teardown_request
 def shutdown_session(exception=None):
-    return
-    #db_session.rollback()
-    #db_session.close()
+    """
+    teardown request
+    """
+    db_session.rollback()
+    db_session.close()
