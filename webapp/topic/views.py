@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, g, abort, request, redirect
 from domain import db_session
 from domain.model.topic import Topic, Category, TopicTag, TopicToTag
 from webapp.topic.forms import TopicForm
+import markdown
 
 
 topic_page = Blueprint('topic_page', __name__)
@@ -20,10 +21,12 @@ def topic_show(id=0):
         #reply = TopicReply.query.filter(TopicReply.topic_id == topic.id).all()
         topic.count.views += 1
         db_session.commit()
+        content = markdown.markdown(topic.content)
     else:
         abort(404)
 
     return render_template('/topic/show.html',
+                           content=content,
                            topic=topic)
                            #category=category,
                            #count=topic.count,
