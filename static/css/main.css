@@ -47,6 +47,7 @@ body, ul, li, a{
 
 p, pre, pre.prettyprint, blockquote {
     margin: 0 0 15px;
+    font-size: 14px;
 }
 
 blockquote {
