@@ -14,7 +14,7 @@ from webapp.main.views import main_page
 
 #app config
 app = Flask(__name__)
-app.config.from_pyfile('config.ini')
+app.config.from_pyfile('setting.ini')
 app.config.from_envvar('SETTING', silent=True)
 
 
