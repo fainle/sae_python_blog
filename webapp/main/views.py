@@ -8,7 +8,7 @@ def main():
     """
     main page
     """
-    return render_template('index.html')
+    return render_template('login.html')
 
 
 @main_page.route("/test")
