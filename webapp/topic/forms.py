@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from package.flask_wtf.form import Form
-from package.wtforms import TextField, TextAreaField, validators, HiddenField, IntegerField, SelectField
-from package.wtforms.validators import Required, Length, ValidationError, Email
+from flask_wtf.form import Form
+from wtforms import TextField, TextAreaField, validators, HiddenField, IntegerField, SelectField
+from wtforms.validators import Required, Length, ValidationError, Email
 from domain.model.topic import Category
 
 
