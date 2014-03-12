@@ -1,4 +1,6 @@
+
 from flask import Blueprint, render_template
+
 
 main_page = Blueprint('main_page', __name__)
 
