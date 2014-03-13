@@ -1,16 +1,22 @@
 <!-- Fixed navbar -->
 <div class="navbar navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-logo" href="/">Fainle</a>
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-logo" href="/">Fainle</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">首页</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if g.user_id %}
+                <a href="/user/{{ g.user_id }}" class="navbar-link">{{ g.nickname }}</a>
+                <a href="/user/logout?next={{ request.path }}" class="navbar-link">退出</a>
+                {% else %}
+                <li><a href="/user/login">登录</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
     </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">首页</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/user/login">登录</a></li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div>
 </div>
