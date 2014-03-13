@@ -10,8 +10,8 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if g.user_id %}
-                <a href="/user/{{ g.user_id }}" class="navbar-link">{{ g.nickname }}</a>
-                <a href="/user/logout?next={{ request.path }}" class="navbar-link">退出</a>
+                <li><a href="/user/{{ g.user_id }}">{{ g.nickname }}</a></li>
+                <li><a href="/user/logout?next={{ request.path }}">退出</a></li>
                 {% else %}
                 <li><a href="/user/login">登录</a></li>
                 {% endif %}
