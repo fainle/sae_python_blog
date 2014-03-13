@@ -2,6 +2,6 @@
 {% block title %}首页{% endblock %}
 {% block css %}{% endblock %}
 {% block content %}
-<h1>{{ topic.title }}</h1><small>分类：<a href="/category/{{ topic.category_id }}">{{ category.name }}</a></small>
+<h1>{{ topic.title }}<small>分类：<a href="/category/{{ topic.category_id }}">{{ category.name }}</a></small></h1>
 {{ topic.content | markdown2html | safe }}
 {% endblock%}
