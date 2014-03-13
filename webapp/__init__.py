@@ -9,7 +9,7 @@ from webapp.topic.views import topic_page
 #from log.upload.views import upload_page
 from domain import db_session
 #from domain.model.user import User
-#from util.filter import register_jinja_filter
+from util.filter import register_jinja_filter
 
 
 #app config
@@ -28,7 +28,7 @@ app.register_blueprint(topic_page)
 
 
 #register jijia2 filter
-#register_jinja_filter(app.jinja_env)
+register_jinja_filter(app.jinja_env)
 
 
 #app before request Category
