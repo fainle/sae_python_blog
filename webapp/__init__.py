@@ -4,6 +4,7 @@ import wtforms
 #from log.mydb.db import db_page
 from webapp.main.views import main_page
 from webapp.topic.views import topic_page
+from webapp.user.views import user_page
 #from log.admin.views import admin_page
 #from log.topic.views import topic_page
 #from log.upload.views import upload_page
@@ -21,7 +22,7 @@ app.config.from_envvar('SETTING', silent=True)
 #register blueprint
 app.register_blueprint(main_page)
 app.register_blueprint(topic_page)
-#app.register_blueprint(user_page)
+app.register_blueprint(user_page)
 #app.register_blueprint(admin_page)
 #app.register_blueprint(topic_page)
 #app.register_blueprint(upload_page)
