@@ -13,7 +13,7 @@
                 <li><a href="/user/{{ g.user_id }}">{{ g.nickname }}</a></li>
                 <li><a href="/user/logout?next={{ request.path }}">退出</a></li>
                 {% else %}
-                <li><a href="/user/login">登录</a></li>
+                <li><a href="/user/login?next={{ request.path }}">登录</a></li>
                 {% endif %}
             </ul>
         </div>
