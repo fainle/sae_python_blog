@@ -1,0 +1,24 @@
+{% extends '/layout/base.html' %}
+{% block title %}登录{% endblock %}
+{% block css %}<link href="/static/css/user.css" rel="stylesheet">{% endblock %}
+{% block content %}
+<form class="form-signin" method="post" action="">
+  <h2 class="form-signin-heading">登录</h2>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <p class="text-error">{{ messages[0] }}</p>
+  {% endif %}
+  {% endwith %}
+  
+  {{ loginform.csrf_token }}
+  {{ loginform.email(placeholder='Email address',class='input-block-level')}}
+  {% if loginform.errors.email %}
+  	<p class="text-error">{{ loginform.errors.email[0] }}</p>
+  {% endif %}
+  {{ loginform.password(placeholder='Password',class='input-block-level',type='password') }}
+  {% if loginform.errors.password %}
+  	<p class="text-error">{{ loginform.errors.password[0] }}</p>
+  {% endif %}
+  <button class="btn btn-large btn-primary" type="submit">登录</button>
+</form>
+{% endblock %}

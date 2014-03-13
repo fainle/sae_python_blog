@@ -1,0 +1,10 @@
+{% extends '/layout/base.html' %}
+{% block title %}登录{% endblock %}
+{% block css %}<link href="/static/css/user.css" rel="stylesheet">{% endblock %}
+{% block content %}
+
+{% for s in 'python linux golang'|string_split %}
+	{{ s }}
+{% endfor %}
+
+{% endblock %}

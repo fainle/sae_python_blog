@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from wtforms import Form, TextField, validators
+from wtforms import Form, TextField
 from wtforms.validators import Required, Length, ValidationError, Email, EqualTo
 from domain.model.user import User
 from flask import flash
@@ -16,11 +16,9 @@ class LoginForm(Form):
         Length(min=5, max=18, message=u'密码长度不对'),
     ])
 
-
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
         self.user = None
-
 
     def validate(self):
         """
