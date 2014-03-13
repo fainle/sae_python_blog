@@ -2,5 +2,6 @@
 {% block title %}首页{% endblock %}
 {% block css %}{% endblock %}
 {% block content %}
+<h1>{{ topic.title }}</h1><small></small>
 {{ topic.content | markdown2html | safe }}
 {% endblock%}
