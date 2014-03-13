@@ -8,38 +8,6 @@ import hashlib
 main_page = Blueprint('main_page', __name__)
 
 
-@main_page.route("/")
-def main():
-    """
-    main page
-    """
-    topic = Topic.query.filter(Topic.id == 1).first()
-    #reply_form = ReplyForm()
-    if topic:
-        #category = Category.query.filter(Category.id == topic.category_id).first()
-        #reply = TopicReply.query.filter(TopicReply.topic_id == topic.id).all()
-        topic.count.views += 1
-        db_session.commit()
-    else:
-        abort(404)
-
-    return render_template('/topic/show.html',
-                           topic=topic)
-                           #category=category,
-                           #count=topic.count,
-                           #reply_form=reply_form,
-                           #reply=reply,)
-
-
-@main_page.route("/test")
-@main_page.route("/test.html")
-def test():
-    """
-    test
-    """
-    return render_template('test.html')
-
-
 @main_page.route('/db/create/db')
 def create_db():
     """
