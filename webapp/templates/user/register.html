@@ -1,32 +1,33 @@
 {% extends '/layout/base.html' %}
 {% block title %}登录{% endblock %}
-{% block css %}<link href="/static/css/user.css" rel="stylesheet">{% endblock %}
+{% block css %}
+<link href="/static/css/user.css" rel="stylesheet">{% endblock %}
 {% block content %}
 <form class="form-signin" method="post" action="">
-  <h2 class="form-signin-heading">登录</h2>
-  {% with messages = get_flashed_messages() %}
-  {% if messages %}
-  <p class="text-error">{{ messages[0] }}</p>
-  {% endif %}
-  {% endwith %}
-  
-  {{ registerform.csrf_token }}
-  {{ registerform.email(placeholder='Email address',class='input-block-level')}}
-  {% if registerform.errors.email %}
-  	<p class="text-error">{{ registerform.errors.email[0] }}</p>
-  {% endif %}
-  {{ registerform.nickname(placeholder='Nickname',class='input-block-level') }}
-  {% if registerform.errors.nickname %}
-    <p class="text-error">{{ registerform.errors.nickname[0] }}</p>
-  {% endif %}
-  {{ registerform.password(placeholder='Password',class='input-block-level',type='password') }}
-  {% if registerform.errors.password %}
-  	<p class="text-error">{{ registerform.errors.password[0] }}</p>
-  {% endif %}
-  {{ registerform.password2(placeholder='Password',class='input-block-level',type='password') }}
-  {% if registerform.errors.password2 %}
-    <p class="text-error">{{ registerform.errors.password2[0] }}</p>
-  {% endif %}
-  <button class="btn btn-large btn-primary" type="submit">登录</button>
+    <h2 class="form-signin-heading">登录</h2>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <p class="text-danger">{{ messages[0] }}</p>
+    {% endif %}
+    {% endwith %}
+
+    {{ registerform.csrf_token }}
+    {{ registerform.email(placeholder='Email address',class='form-control')}}
+    {% if registerform.errors.email %}
+    <p class="text-danger">{{ registerform.errors.email[0] }}</p>
+    {% endif %}
+    {{ registerform.nickname(placeholder='Nickname',class='form-control') }}
+    {% if registerform.errors.nickname %}
+    <p class="text-danger">{{ registerform.errors.nickname[0] }}</p>
+    {% endif %}
+    {{ registerform.password(placeholder='Password',class='form-control',type='password') }}
+    {% if registerform.errors.password %}
+    <p class="text-danger">{{ registerform.errors.password[0] }}</p>
+    {% endif %}
+    {{ registerform.password2(placeholder='Password',class='form-control',type='password') }}
+    {% if registerform.errors.password2 %}
+    <p class="text-danger">{{ registerform.errors.password2[0] }}</p>
+    {% endif %}
+    <button class="btn btn-large btn-primary" type="submit">登录</button>
 </form>
 {% endblock %}
