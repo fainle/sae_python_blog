@@ -2,6 +2,7 @@
 {% block title %}首页{% endblock %}
 {% block css %}{% endblock %}
 {% block content %}
+
 {% for t in topic%}
 <h4><a href="/topic/{{ t.id }}">{{ t.title }}</a></h4>
 <p class="muted">
@@ -19,4 +20,5 @@
 <p><a href="/topic/{{ t.id }}">查看 ({{ t.content | length }})</a></p>
 <div class="line"></div>
 {% endfor %}
+
 {% endblock%}
