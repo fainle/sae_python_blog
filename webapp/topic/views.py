@@ -30,9 +30,9 @@ def topic_show(id=1):
                            content=content,
                            topic=topic,
                            category=category)
-                           #count=topic.count,
-                           #reply_form=reply_form,
-                           #reply=reply,)
+    #count=topic.count,
+    #reply_form=reply_form,
+    #reply=reply,)
 
 
 @topic_page.route('/topic/add', methods=("POST", "GET"))
@@ -40,6 +40,9 @@ def topic_show(id=1):
 #@login_required
 #@is_admin
 def topic_add(id=0):
+    """
+    add topic
+    """
     topic = Topic.query.filter(Topic.id == id).first()
     topic_form = TopicForm(obj=topic)
     topic_form.category_id.choices = [(c.id, c.name) for c in Category.query.order_by(Category.id.asc()).all()]
@@ -99,3 +102,14 @@ def topic_add(id=0):
         return render_template('/topic/add.html',
                                topic_form=topic_form,
         )
+
+
+@topic_page.route('/topic/all')
+def topic_all():
+    """
+    topic all
+    """
+    topic = Topic.query.all()
+    return render_template('/topic/all.html',
+                           topic=topic
+    )
