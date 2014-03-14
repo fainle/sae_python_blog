@@ -9,29 +9,29 @@
       <h3>添加文章</h3>
       <form class="form" id="categoryForm" method="post" action="">
 			{{ topic_form.csrf_token }}
-			<div class="control-group {% if topic_form.errors.title %}error{% endif %}">
+			<div class="form-group {% if topic_form.errors.title %}has-error{% endif %}">
 				<div class="controls">
-				{{ topic_form.title(class="input-xxlarge",placeholder="标题")}}
+				{{ topic_form.title(class="form-control",placeholder="标题")}}
 				</div>
 			</div>
-			<div class="control-group {% if topic_form.errors.content %}error{% endif %}">
+			<div class="form-group {% if topic_form.errors.content %}has-error{% endif %}">
 				<div class="controls">
 				{{ topic_form.content(id="markItUp",rows="20",cols="80") }}
 				</div>
 			</div>
-			<div class="control">
+			<div class="form-group">
 				<div class="controls">
 				{{ topic_form.category_id(placeholder="分类")}}
 				<span class="help-inline error" id="inputWarning"></span>
 				</div>
 			</div>
-			<div class="control">
+			<div class="form-group">
 				<div class="controls">
-				{{ topic_form.tag(class="input-xlarge",placeholder="tag")}}
+				{{ topic_form.tag(class="form-control",placeholder="tag")}}
 				<span class="help-inline error" id="inputWarning"></span>
 				</div>
 			</div>
-			<div class="control">
+			<div class="form-group">
 				<div class="controls">
 				<button class="btn btn-primary" id="doSave">确定</button>
 				</div>
