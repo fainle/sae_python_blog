@@ -110,7 +110,7 @@ def topic_all():
     topic all
     """
     topic = Topic.query.all()
-    
+
     return render_template('/topic/all.html',
                            topic=topic
     )
