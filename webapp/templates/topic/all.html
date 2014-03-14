@@ -4,7 +4,7 @@
 {% block content %}
 
 {% for t in topic%}
-<h4><a href="/topic/{{ t.id }}">{{ t.title }}</a></h4>
+<h4><a href="/{{ t.id }}">{{ t.title }}</a></h4>
 <p class="muted">
     <small class="text-sd">分类：</a></small>
     <small class="text-sd">浏览：{{ t.count.views }}</small>
