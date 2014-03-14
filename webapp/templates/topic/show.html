@@ -2,7 +2,9 @@
 {% block title %}首页{% endblock %}
 {% block css %}{% endblock %}
 {% block content %}
-<h3>{{ topic.title }}<small>编辑：<a href="/topic/add/{{ topic.id }}">{{ topic.title }}</a></small></h3>
+<h3>{{ topic.title }}
+{%if g.user_id == 1 %}%<small>编辑：<a href="/topic/add/{{ topic.id }}">{{ topic.title }}</a></small>{% endif %}
+</h3>
 <br />
 {{ topic.content | markdown2html | safe }}
 {% endblock%}
