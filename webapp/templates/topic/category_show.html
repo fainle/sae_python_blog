@@ -3,12 +3,10 @@
 {% block css %}<link href="/static/css/highlight/default.css" rel="stylesheet">{% endblock %}
 
 {% block content %}
-<h3>{{ category.name }}
-{%if g.user_id == 1 -%}<small>编辑：<a href="/topic/c/add/{{ category.id }}">{{ category.name }}</a></small>{% endif -%}
-</h3>
+<h3>{{ category.name }}</h3>
 <br />
 {{ category.content | markdown2html | safe }}
-{% endblock%}
+{% endblock %}
 
 {% block js %}
 	<script src="/static/js/highlight.pack.js"></script>
