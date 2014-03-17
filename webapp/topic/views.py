@@ -128,8 +128,8 @@ def category_show(id=8):
                            category=category)
 
 
-@topic_page.route("/topic/c/add", method=('get', 'post'))
-@topic_page.route("/topic/c/add/<int:id>", method=('get', 'post'))
+@topic_page.route("/topic/c/add", methods=('get', 'post'))
+@topic_page.route("/topic/c/add/<int:id>", methods=('get', 'post'))
 def add_category(id=0):
     """
     add category
