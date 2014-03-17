@@ -139,6 +139,7 @@ def add_category(id=0):
             db_session.commit()
         else:
             category = Category(category_form.name.data)
+            category.content = category_form.content.data
             db_session.add(category)
             db_session.flush()
             db_session.commit()
