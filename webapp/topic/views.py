@@ -119,10 +119,11 @@ def category_show(id=0):
     """
     category = Category.query.filter(Category.id == id).first()
     #reply_form = ReplyForm()
-
-    return render_template('/topic/category_show.html',
+    if category:
+        return render_template('/topic/category_show.html',
                            category=category)
-
+    else:
+        abort(404)
 
 @topic_page.route("/topic/c/add", methods=('get', 'post'))
 @topic_page.route("/topic/c/add/<int:id>", methods=('get', 'post'))
