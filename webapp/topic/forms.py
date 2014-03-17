@@ -15,6 +15,7 @@ class CategoryForm(Form):
         Length(min=2, max=20, message=u'分类名称不能太长')
     ])
     content = TextAreaField('content')
+    num = IntegerField('num')
 
 
 class TopicForm(Form):
