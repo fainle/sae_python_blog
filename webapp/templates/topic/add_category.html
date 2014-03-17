@@ -9,12 +9,12 @@
       <h3>添加分类</h3>
       <form class="form" id="categoryForm" method="post" action="">
 			{{ category_form.csrf_token }}
-			<div class="form-group {% if topic_form.errors.title %}has-error{% endif %}">
+			<div class="form-group {% if category_form.errors.name %}has-error{% endif %}">
 				<div class="controls">
 				{{ category_form.name(class="form-control",placeholder="标题")}}
 				</div>
 			</div>
-			<div class="form-group {% if topic_form.errors.content %}has-error{% endif %}">
+			<div class="form-group {% if category_form.errors.content %}has-error{% endif %}">
 				<div class="controls">
 				{{ category_form.content(id="markItUp",rows="20",cols="130") }}
 				</div>
