@@ -113,16 +113,12 @@ def topic_all():
 
 @topic_page.route("/c")
 @topic_page.route("/c/<int:id>")
-def category_show(id=8):
+def category_show(id=0):
     """
     main page
     """
     category = Category.query.filter(Category.id == id).first()
     #reply_form = ReplyForm()
-    if category:
-        pass
-    else:
-        abort(404)
 
     return render_template('/topic/category_show.html',
                            category=category)
