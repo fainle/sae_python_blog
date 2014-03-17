@@ -126,4 +126,4 @@ def category_show(id=8):
         abort(404)
 
     return render_template('/topic/category_show.html',
-                           category="")
+                           category=category)
