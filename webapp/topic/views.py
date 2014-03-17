@@ -114,7 +114,7 @@ def topic_all():
 
 @topic_page.route("/c")
 @topic_page.route("/c/<int:id>")
-def category_show(id=0):
+def category_show(id=8):
     """
     main page
     """
