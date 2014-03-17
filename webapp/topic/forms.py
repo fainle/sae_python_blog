@@ -9,7 +9,6 @@ class CategoryForm(Form):
     """
     category form
     """
-    id = HiddenField('id', default=0)
     name = TextField('name', validators=[
         Required(u'分类名称不能为空'),
         Length(min=2, max=20, message=u'分类名称不能太长')
