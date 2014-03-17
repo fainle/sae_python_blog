@@ -1,1 +1,18 @@
 {% extends "/layout/base.html" %}
+{% block title %}首页{% endblock %}
+{% block css %}<link href="/static/css/highlight/default.css" rel="stylesheet">{% endblock %}
+
+{% block content %}
+<h3>{{ category.title }}
+{%if g.user_id == 1 -%}<small>编辑：<a href="/topic/c/add/{{ category.id }}">{{ category.title }}</a></small>{% endif -%}
+</h3>
+<br />
+{{ category.content | markdown2html | safe }}
+{% endblock%}
+
+{% block js %}
+	<script src="/static/js/highlight.pack.js"></script>
+	<script type="text/javascript">
+	    hljs.initHighlightingOnLoad();
+	</script>
+{% endblock js%}
