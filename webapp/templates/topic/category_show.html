@@ -3,7 +3,7 @@
 {% block css %}<link href="/static/css/highlight/default.css" rel="stylesheet">{% endblock %}
 {% block content %}
 <h3>{{ category.title }}
-{%if g.user_id == 1 -%}<small>编辑：<a href="/topic/c/add/{{ topic.id }}">{{ category.title }}</a></small>{% endif -%}
+{%if g.user_id == 1 -%}<small>编辑：<a href="/topic/c/add/{{ category.id }}">{{ category.title }}</a></small>{% endif -%}
 </h3>
 <br />
 {{ category.content | markdown2html | safe }}
