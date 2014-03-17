@@ -2,7 +2,7 @@ __author__ = 'apple'
 from flask import Blueprint, render_template, g, abort, request, redirect
 from domain import db_session
 from domain.model.topic import Topic, Category, TopicTag, TopicToTag
-from webapp.topic.forms import TopicForm
+from webapp.topic.forms import TopicForm, CategoryForm
 
 
 topic_page = Blueprint('topic_page', __name__)
@@ -97,8 +97,7 @@ def topic_add(id=0):
         return redirect('/%s' % topic.id)
     else:
         return render_template('/topic/add.html',
-                               topic_form=topic_form,
-        )
+                               topic_form=topic_form)
 
 
 @topic_page.route('/topic/all')
@@ -127,3 +126,27 @@ def category_show(id=8):
 
     return render_template('/topic/category_show.html',
                            category=category)
+
+
+@topic_page.route("/topic/c/add")
+@topic_page.route("/topic/c/add/<int:id>")
+def add_category(id=0):
+    """
+    add category
+    """
+    category = Category.query.filter(Category.id == id).first()
+    category_form = CategoryForm(obj=category)
+    if request.method == 'POST' and category_form.validate():
+        if category:
+            category_form.populate_obj(category)
+            db_session.flush()
+            db_session.commit()
+        else:
+            category = Category(category_form.name.data)
+            db_session.add(category)
+            db_session.flush()
+            db_session.commit()
+        return redirect("/c/%s" % category.id)
+    else:
+        return render_template('/topic/add_category.html',
+                               category_form=category_form)
