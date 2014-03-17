@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, g, session
-import wtforms
-#from log.mydb.db import db_page
+from flask import Flask, g, session, render_template
 from webapp.main.views import main_page
 from webapp.topic.views import topic_page
 from webapp.user.views import user_page
@@ -54,3 +52,11 @@ def shutdown_session(exception=None):
     """
     db_session.rollback()
     db_session.close()
+
+
+@app.route('/google6b4228096abe7a0c.html')
+def google_websites():
+    """
+    google websites
+    """
+    return render_template('/common/google6b4228096abe7a0c.html')
