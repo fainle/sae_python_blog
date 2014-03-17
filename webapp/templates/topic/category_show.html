@@ -4,6 +4,10 @@
 
 {% block content %}
 <h3>{{ category.name }}
+{%if g.user_id == 1 -%}<small>编辑：<a href="/topic/c/add/{{ category.id }}">{{ category.name }}</a></small>{% endif -%}
+</h3>
+<br />
+{{ category.content | markdown2html | safe }}
 {% endblock%}
 
 {% block js %}
