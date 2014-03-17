@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, abort
 from domain import db_session, engine
 from domain.model import Base
-from domain.model.topic import Topic
 import hashlib
 
 
