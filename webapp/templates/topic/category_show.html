@@ -9,7 +9,7 @@
 {% endif %}
 </h3>
 <br />
-{{ category.content }}
+{{ category.content | markdown2html | safe }}
 {% endblock %}
 
 {% block js %}
