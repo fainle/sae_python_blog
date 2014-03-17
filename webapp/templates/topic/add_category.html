@@ -1,0 +1,83 @@
+{% extends '/layout/base.html' %}
+{% block title %}管理{% endblock %}
+{% block css %}<link rel="stylesheet" type="text/css" href="/static/markitup/skins/markitup/style.css" />
+<link rel="stylesheet" type="text/css" href="/static/markitup/sets/markdown/style.css" />{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="span8">
+    <div class="conl basediv">
+      <h3>添加分类</h3>
+      <form class="form" id="categoryForm" method="post" action="">
+			{{ category_form.csrf_token }}
+			<div class="form-group {% if topic_form.errors.title %}has-error{% endif %}">
+				<div class="controls">
+				{{ category_form.name(class="form-control",placeholder="标题")}}
+				</div>
+			</div>
+			<div class="form-group {% if topic_form.errors.content %}has-error{% endif %}">
+				<div class="controls">
+				{{ category_form.content(id="markItUp",rows="20",cols="130") }}
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="controls">
+				<button class="btn btn-primary" id="doSave">确定</button>
+				</div>
+			</div>
+		</form>
+    </div>
+  </div>
+<!--upload-->
+<div id="upload" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">Modal header</h3>
+	</div>
+	<div class="modal-body">
+		<p>One fine body…</p>
+      	<p><input type="file" name="file" id="file"></p>
+    	<p><button class="btn" id="upload_pic">upload pic</button></p>
+    	<p><input type="text" name="pic_title" id="pic_title" value=""></p>
+    	<p><input type="text" name="pic_url" id="pic_url" value=""></p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		<button class="btn btn-primary" id="insert_pic">Save changes</button>
+	</div>
+</div>
+<!--/upload-->
+</div>
+{% endblock %}
+{% block js %}
+	<script src="/static/markitup/jquery.markitup.js"></script>
+	<script src="/static/markitup/sets/markdown/set.js"></script>
+	<script src="/static/js/topic/jquery.upload.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#markItUp').markItUp(mySettings);
+			//pic uplaod
+			$("#upload_pic").click(function() {
+				$.ajaxFileUpload ({
+					url:"http://dilan.sinaapp.com/upload",
+					fileElementId:"file",
+					dataType:"json",
+					success:function(data){
+						var url = "/file/" + data.name;
+						$("#pic_url").val(url)
+					}
+				})
+			});
+			//insert pic url
+			$("#insert_pic").click(function() {
+				src = $("#pic_url").val();
+				alt = $("#pic_title").val();
+				$.markItUp(
+					{ replaceWith:'<img src="'+src+'" alt="'+alt+'" title="'+alt+'"(!( class="[![Class]!]")!) />' }
+				);
+				$('#upload').modal('hide');
+				return false;
+			});
+		});
+
+	</script>
+{% endblock js%}
