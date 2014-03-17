@@ -109,8 +109,7 @@ def topic_all():
     topic = Topic.query.all()
 
     return render_template('/topic/all.html',
-                           topic=topic
-    )
+                           topic=topic)
 
 
 @topic_page.route("/c")
