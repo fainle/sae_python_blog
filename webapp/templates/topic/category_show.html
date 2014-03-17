@@ -5,7 +5,7 @@
 {% block content %}
 <h3>{{ category.name }}</h3>
 <br />
-{{ category.content | markdown2html | safe }}
+{{ category.content }}
 {% endblock %}
 
 {% block js %}
