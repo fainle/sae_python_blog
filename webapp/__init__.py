@@ -60,3 +60,11 @@ def google_websites():
     google websites
     """
     return render_template('/common/google6b4228096abe7a0c.html')
+
+
+@app.route('/baidu_verify_Zkeq1VQO9s.html')
+def baidu_websites():
+    """
+    baidu websites
+    """
+    return render_template('/common/baidu_verify_Zkeq1VQO9s.html')
