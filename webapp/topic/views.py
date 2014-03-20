@@ -125,6 +125,7 @@ def category_show(id=0):
     else:
         abort(404)
 
+
 @topic_page.route("/topic/c/add", methods=('get', 'post'))
 @topic_page.route("/topic/c/add/<int:id>", methods=('get', 'post'))
 def add_category(id=0):
