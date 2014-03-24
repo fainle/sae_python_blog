@@ -3,15 +3,7 @@
 {% block css %}<link href="/static/css/highlight/default.css" rel="stylesheet">{% endblock %}
 
 {% block content %}
-<h3>{{ tag.name }}
-{%if g.user_id == 1 %}
-    <small><a href="/topic/t/add/{{ tag.id }}">编辑</a> | <a href="/topic/t/add">新建</a></small>
-{% endif %}
-</h3>
-<br />
-{% if tag.content %}
-{{ tag.content | markdown2html | safe }}
-{% endif %}
+<p>404, page not found</p>
 {% endblock %}
 
 {% block js %}
