@@ -68,3 +68,12 @@ def baidu_websites():
     baidu websites
     """
     return render_template('/common/baidu_verify_Zkeq1VQO9s.html')
+
+
+@app.errorhandler(404)
+def page_not_found(exception=None):
+    """
+    404 error page.
+    """
+
+    return render_template('/common/404.html'), 404
