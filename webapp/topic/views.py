@@ -149,3 +149,18 @@ def add_category(id=0):
     else:
         return render_template('/topic/add_category.html',
                                category_form=category_form)
+
+
+@topic_page.route("/t")
+@topic_page.route("/t/<int:id>")
+def tag_show(id=0):
+    """
+    main page
+    """
+    tag = TopicTag.query.filter(TopicTag.id == id).first()
+    #reply_form = ReplyForm()
+    if tag:
+        return render_template('/topic/tag_show.html',
+                               tag=tag)
+    else:
+        abort(404)
