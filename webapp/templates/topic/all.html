@@ -9,11 +9,9 @@
 {% endfor -%}
 </ul>
 <h4>标签</h4>
-<ul class="list-inline">
 {%for t in tags -%}
-<li style="margin: 10px 0 0 10px;"><a class="btn btn-default" href="/t/{{ t.id }}">{{ t.name }}({{ t.num }})</a></li>
+<a style="margin: 10px 0 0 10px;" class="btn btn-default" href="/t/{{ t.id }}">{{ t.name }}({{ t.num }})</a>
 {% endfor -%}
-</ul>
 {% for t in topic %}
 <h4><a href="/{{ t.id }}">{{ t.title }}</a></h4>
 <p class="muted">
