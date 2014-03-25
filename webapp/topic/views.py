@@ -105,10 +105,14 @@ def topic_all():
     """
     topic all
     """
-    topic = Topic.query.all()
+    #topic = Topic.query.all()
+    tag = TopicTag.query.all()
+    category = Category.query.all()
 
     return render_template('/topic/all.html',
-                           topic=topic)
+                           tags=tag,
+                           categorys=category)
+                           #topic=topic)
 
 
 @topic_page.route("/c")
