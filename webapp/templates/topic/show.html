@@ -11,9 +11,11 @@
 {{ topic.content | markdown2html | safe }}
 <hr />
 <p><span class="glyphicon glyphicon-tags"></span>
-{% for tagname in topic.tag|string_split %}
+{%if topic.tag -%}
+{% for tagname in topic.tag|string_split -%}
 <a href="/tag/{{ tagname }}">{{ tagname }}</a>
-{% endfor %}
+{% endfor -%}
+{% endif -%}
 </p>
 {% endblock%}
 {% block js %}
