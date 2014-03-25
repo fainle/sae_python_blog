@@ -10,9 +10,9 @@
 <hr />
 {{ topic.content | markdown2html | safe }}
 <hr />
-<p><i class="icon-tags"></i>
+<p><span class="glyphicon glyphicon-tags"></span>
 {% for tagname in topic.tag|string_split %}
-    <a href="/tag/{{ tagname }}">{{ tagname }}</a>
+<a href="/tag/{{ tagname }}">{{ tagname }}</a>
 {% endfor %}
 </p>
 {% endblock%}
