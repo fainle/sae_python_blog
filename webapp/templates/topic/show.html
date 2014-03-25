@@ -7,8 +7,14 @@
     <small><a href="/topic/add/{{ topic.id }}">编辑</a> | <a href="/topic/add">新建</a></small>
 {% endif -%}
 </h3>
-<br />
+<hr />
 {{ topic.content | markdown2html | safe }}
+<hr />
+<p><i class="icon-tags"></i>
+{% for tagname in topic.tag|string_split %}
+    <a href="/tag/{{ tagname }}">{{ tagname }}</a>
+{% endfor %}
+</p>
 {% endblock%}
 {% block js %}
 	<script src="/static/js/highlight.pack.js"></script>
