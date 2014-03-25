@@ -10,7 +10,7 @@
 </ul>
 <h4>标签</h4>
 {%for t in tags -%}
-<a style="margin: 10px 5px 10px 0;" class="btn btn-default" href="/t/{{ t.id }}">{{ t.name }}({{ t.num }})</a>
+<a style="margin: 10px 5px 10px 0;" class="btn btn-default" href="/t/{{ t.id }}">{{ t.name }} <span class="badge">{{ t.num }}</span></a>
 {% endfor -%}
 {% for t in topic %}
 <h4><a href="/{{ t.id }}">{{ t.title }}</a></h4>
