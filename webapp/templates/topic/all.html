@@ -3,14 +3,17 @@
 {% block css %}{% endblock %}
 {% block content %}
 <h4>分类</h4>
+<ul class="list-inline">
 {%for c in categorys -%}
-<a class="btn btn-default" href="/c/{{ c.id }}">{{ c.name }}<span class="badge">{{ c.num }}</span></a>
+<li><a class="btn btn-default" href="/c/{{ c.id }}">{{ c.name }}<span class="badge">{{ c.num }}</span></a></li>
 {% endfor -%}
+</ul>
 <h4>标签</h4>
+<ul class="list-inline">
 {%for t in tags -%}
-<a class="btn btn-default" href="/t/{{ t.id }}">{{ t.name }}<span class="badge">{{ t.num }}</span></a>
+<li><a class="btn btn-default" href="/t/{{ t.id }}">{{ t.name }}<span class="badge">{{ t.num }}</span></a></li>
 {% endfor -%}
-
+</ul>
 {% for t in topic %}
 <h4><a href="/{{ t.id }}">{{ t.title }}</a></h4>
 <p class="muted">
