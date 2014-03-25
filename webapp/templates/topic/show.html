@@ -13,7 +13,7 @@
 <p>
 {%if topic.tag -%}
 {% for tagname in topic.tag|string_split -%}
-<a class="btn btn-default" href="/t/{{ tagname }}"><span class="glyphicon glyphicon-tags"></span>{{ tagname }}</a>
+<a class="btn btn-default" href="/t/{{ tagname }}">{{ tagname }}</a>
 {% endfor -%}
 {% endif -%}
 </p>
