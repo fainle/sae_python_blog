@@ -1,7 +1,7 @@
-{% extends "/layout/base.html" %}
-{% block title %}首页{% endblock %}
+{% extends "/layout/base.html" -%}
+{% block title %}{{ topic.title }}{% endblock %}
 {% block css %}<link href="/static/css/highlight/default.css" rel="stylesheet">{% endblock %}
-{% block content %}
+{% block content -%}
 <h3>{{ topic.title }}
 {%if g.user_id == 1 -%}
     <small><a href="/topic/add/{{ topic.id }}">编辑</a> | <a href="/topic/add">新建</a></small>
@@ -17,7 +17,7 @@
 {% endfor -%}
 {% endif -%}
 </p>
-{% endblock%}
+{% endblock -%}
 {% block js %}
 	<script src="/static/js/highlight.pack.js"></script>
 	<script type="text/javascript">
