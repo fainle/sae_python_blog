@@ -5,8 +5,16 @@
             <a class="navbar-logo" href="/">Fainle</a>
         </div>
         <div class="navbar-collapse collapse">
+        {% if 'about' in request.path -%}
+            {% set about_class="active" -%}
+        {% elif 'all' in request.path -%}
+            {% set all_class="active" -%}
+        {% else -%}
+            {% set index_class="active" -%}
+        {% endif -%}
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">首页</a></li>
+                <li class="{{index_class}}"><a href="/">首页</a></li>
+                <li class="{{all_class}}"><a href="/topic/all">导航</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if g.user_id %}
