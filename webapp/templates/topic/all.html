@@ -3,31 +3,11 @@
 {% block css %}{% endblock %}
 {% block content %}
 <h4>分类</h4>
-<ul class="list-inline">
 {%for c in categorys -%}
-<li><a class="btn btn-default" href="/c/{{ c.id }}">{{ c.name }}<span class="badge">{{ c.num }}</span></a></li>
+<a style="margin: 10px 5px 10px 0;" class="btn btn-default" href="/c/{{ c.id }}">{{ c.name }} <span class="badge">{{ c.num }}</span></a>
 {% endfor -%}
-</ul>
 <h4>标签</h4>
 {%for t in tags -%}
 <a style="margin: 10px 5px 10px 0;" class="btn btn-default" href="/t/{{ t.id }}">{{ t.name }} <span class="badge">{{ t.num }}</span></a>
 {% endfor -%}
-{% for t in topic %}
-<h4><a href="/{{ t.id }}">{{ t.title }}</a></h4>
-<p class="muted">
-    <small class="text-sd">分类：</a></small>
-    <small class="text-sd">浏览：{{ t.count.views }}</small>
-    <small class="text-sd">回复：{{ t.count.reply_num }}</small>
-    <small class="text-sd">发布：{{ t.created_at }}</small>
-</p>
-<p>{{ t.content | striptags | truncate(200, False, '......') }}</p>
-<p><i class="icon-tags"></i>
-    {% for tagname in t.tag|string_split %}
-    <a href="/tag/{{ tagname }}">{{ tagname }}</a>
-    {% endfor %}
-</p>
-<p><a href="/topic/{{ t.id }}">查看 ({{ t.content | length }})</a></p>
-<div class="line"></div>
-{% endfor %}
-
 {% endblock%}
