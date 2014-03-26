@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, g, abort, request, redirect
 from domain import db_session
 from domain.model.topic import Topic, Category, TopicTag, TopicToTag
 from webapp.topic.forms import TopicForm, CategoryForm
+from webapp.user import is_admin, login_required
 
 
 topic_page = Blueprint('topic_page', __name__)
@@ -34,8 +35,8 @@ def topic_show(id=1):
 
 @topic_page.route('/topic/add', methods=("POST", "GET"))
 @topic_page.route('/topic/add/<int:id>', methods=("POST", "GET"))
-#@login_required
-#@is_admin
+@login_required
+@is_admin
 def topic_add(id=0):
     """
     add topic
@@ -132,6 +133,8 @@ def category_show(id=0):
 
 @topic_page.route("/topic/c/add", methods=('get', 'post'))
 @topic_page.route("/topic/c/add/<int:id>", methods=('get', 'post'))
+@login_required
+@is_admin
 def add_category(id=0):
     """
     add category
@@ -162,9 +165,13 @@ def tag_show(id=0):
     main page
     """
     tag = TopicTag.query.filter(TopicTag.id == id).first()
+    topic_tag = TopicToTag.query.filter(TopicToTag.tag_id == tag.id).all()
+    tagids = [t.topic_id for t in topic_tag]
+    topic = Topic.gets(tagids)
     #reply_form = ReplyForm()
     if tag:
         return render_template('/topic/tag_show.html',
+                               topic=topic,
                                tag=tag)
     else:
         abort(404)
