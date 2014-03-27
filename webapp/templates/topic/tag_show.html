@@ -23,7 +23,7 @@
 <p>{{ t.content | striptags | truncate(200, False, '......') }}</p>
 <p><i class="icon-tags"></i>
     {% for tagname in t.tag|string_split %}
-    <a href="/tag/{{ tagname }}">{{ tagname }}</a>
+    <a href="/t/name/{{ tagname }}">{{ tagname }}</a>
     {% endfor %}
 </p>
 <p><a href="/topic/{{ t.id }}">查看 ({{ t.content | length }})</a></p>
