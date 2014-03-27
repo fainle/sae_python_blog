@@ -160,11 +160,12 @@ def add_category(id=0):
 
 @topic_page.route("/t")
 @topic_page.route("/t/<int:id>")
-def tag_show(id=0):
+@topic_page.route("/t/<string:tag>")
+def tag_show(id=0, tag=''):
     """
     main page
     """
-    tag = TopicTag.query.filter(TopicTag.id == id).first()
+    tag = TopicTag.query.filter(TopicTag.id == id or TopicTag.tag == tag).first()
     topic_tag = TopicToTag.query.filter(TopicToTag.tag_id == tag.id).all()
     tagids = [t.topic_id for t in topic_tag]
     topic = Topic.gets(tagids)
