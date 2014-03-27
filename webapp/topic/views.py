@@ -158,18 +158,21 @@ def add_category(id=0):
                                category_form=category_form)
 
 
-@topic_page.route("/t")
-@topic_page.route("/t/<int:id>")
-@topic_page.route("/t/<string:name>")
+@topic_page.route("/t/id/<int:id>")
+@topic_page.route("/t/name/<string:name>")
 def tag_show(id=0, name=''):
     """
     main page
     """
-    tag = TopicTag.query.filter(TopicTag.id == id or TopicTag.name == name).first()
+    if name is not "":
+        tag = TopicTag.query.filter(TopicTag.name == name).first()
+    else:
+        tag = TopicTag.query.filter(TopicTag.id == id).first()
+
     topic_tag = TopicToTag.query.filter(TopicToTag.tag_id == tag.id).all()
     tagids = [t.topic_id for t in topic_tag]
     topic = Topic.gets(tagids)
-    #reply_form = ReplyForm()
+
     if tag:
         return render_template('/topic/tag_show.html',
                                topic=topic,
