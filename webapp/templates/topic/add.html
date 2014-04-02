@@ -60,14 +60,7 @@
 <!--/upload-->
 </div>
 {% endblock %}
-{% block js %}
+{% block js -%}
 <script src="/static/js/bootstrap.min.js"></script>
-<script src="/static/js/require.js"></script>
-<script>
-    window.baseDir = '/static/js';
-    window.require = {
-        baseUrl: window.baseDir,
-        deps: ['show']
-    };
-</script>
-{% endblock js%}
+<script src="/static/js/require.js" data-main="/static/js/show"></script>
+{% endblock -js%}
