@@ -3,7 +3,6 @@ require.config({
     paths:{
         "jquery":"js/jquery",
         "markitup":"markitup/jquery.markitup",
-        "set":"markitup/sets/markdown/set"
     }
 })
 
@@ -37,9 +36,9 @@ mySettings = {
 	]
 }
 
-require(['jquery','markitup',"set"], function($){
+require(['jquery','markitup'], function($){
     $(function() {
-        $('#markItUp').$.markItUp(mySettings);
+        $('#markItUp').markItUp(mySettings);
         //pic uplaod
         $("#upload_pic").click(function() {
             $.ajaxFileUpload ({
