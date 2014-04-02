@@ -39,7 +39,7 @@ mySettings = {
 
 require(['jquery','markitup',"set"], function($){
     $(function() {
-        $('#markItUp').$.fn.markItUp(mySettings);
+        $('#markItUp').$.markItUp(mySettings);
         //pic uplaod
         $("#upload_pic").click(function() {
             $.ajaxFileUpload ({
