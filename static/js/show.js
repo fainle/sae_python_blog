@@ -1,1 +1,2 @@
 alert("hehe");
+alert();
