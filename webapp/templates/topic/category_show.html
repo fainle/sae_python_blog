@@ -5,7 +5,8 @@
 {% block content %}
 <h3>{{ category.name }}
 {%if g.user_id == 1 %}
-    <small><a href="/topic/c/add/{{ category.id }}">编辑</a> | <a href="/topic/c/add">新建</a></small>
+    <small><a href="/topic/c/add/{{ category.id }}">编辑栏目</a> | <a href="/topic/c/add">新建栏目</a>
+        | <a href="/topic/add">新建帖子</a></small>
 {% endif %}
 </h3>
 <br />

@@ -116,6 +116,20 @@ def topic_all():
                            #topic=topic)
 
 
+@topic_page.route('/topic/del/<int:id>')
+@login_required
+@is_admin
+def topic_del():
+    """
+    del topic
+    """
+    if id:
+        Topic.query(Topic.id == id).delete()
+        return redirect('/')
+    else:
+        abort(404)
+
+
 @topic_page.route("/c")
 @topic_page.route("/c/<int:id>")
 def category_show(id=0):
