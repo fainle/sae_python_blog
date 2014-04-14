@@ -31,6 +31,6 @@ def markdown2html(s):
     s is string
     """
     if s:
-        html = markdown(s)
+        html = markdown(s, ['extra'])
 
     return html
