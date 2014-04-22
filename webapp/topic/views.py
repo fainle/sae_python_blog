@@ -117,7 +117,7 @@ def topic_all():
 
 
 @topic_page.route('/topic/list')
-def topic_all():
+def topic_list():
     """
     topic all
     """
