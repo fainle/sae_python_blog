@@ -127,7 +127,7 @@ def topic_all():
 
     return render_template('/topic/list.html',
                            #tags=tag,
-                           categorys=category,
+                           category=category,
                            topic=topic)
 
 
