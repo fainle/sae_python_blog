@@ -121,7 +121,7 @@ def topic_list():
     """
     topic all
     """
-    topic = Topic.query.all()
+    topic = Topic.query.order(Topic.id.desc()).all()
     #tag = TopicTag.query.all()
     category = Category.query.all()
 
