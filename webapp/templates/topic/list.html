@@ -5,7 +5,7 @@
 {% for t in topic %}
 <h4><a href="/{{ t.id }}">{{ t.title }}</a></h4>
 <p class="muted">
-    <small class="text-sd">分类：{{ category[t.category_id].name }}</a></small>
+    <small class="text-sd">分类：</a></small>
     <small class="text-sd">浏览：{{ t.count.views }}</small>
     <small class="text-sd">回复：{{ t.count.reply_num }}</small>
     <small class="text-sd">发布：{{ t.created_at }}</small>
