@@ -1,0 +1,28 @@
+{% extends "/layout/base.html" %}
+{% block title %}首页{% endblock %}
+{% block css %}<link href="/static/css/highlight/default.css" rel="stylesheet">{% endblock %}
+{% block content %}
+{% for t in topic %}
+<h4><a href="/{{ t.id }}">{{ t.title }}</a></h4>
+<p class="muted">
+    <small class="text-sd">分类：{{ category.get(t.category_id).name }}</a></small>
+    <small class="text-sd">浏览：{{ t.count.views }}</small>
+    <small class="text-sd">回复：{{ t.count.reply_num }}</small>
+    <small class="text-sd">发布：{{ t.created_at }}</small>
+</p>
+<p>{{ t.content | striptags | truncate(200, False, '......') }}</p>
+<p><i class="icon-tags"></i>
+    {% for tagname in t.tag|string_split %}
+    <a href="/t/name/{{ tagname }}">{{ tagname }}</a>
+    {% endfor %}
+</p>
+<p><a href="/topic/{{ t.id }}">查看 ({{ t.content | length }})</a></p>
+<hr />
+{% endfor %}
+{% endblock %}
+{% block js %}
+	<script src="/static/js/highlight.pack.js"></script>
+	<script type="text/javascript">
+	    hljs.initHighlightingOnLoad();
+	</script>
+{% endblock js%}

@@ -116,6 +116,21 @@ def topic_all():
                            #topic=topic)
 
 
+@topic_page.route('/topic/list')
+def topic_all():
+    """
+    topic all
+    """
+    topic = Topic.query.all()
+    #tag = TopicTag.query.all()
+    category = Category.query.all()
+
+    return render_template('/topic/list.html',
+                           #tags=tag,
+                           categorys=category,
+                           topic=topic)
+
+
 @topic_page.route('/topic/del/<int:id>')
 @login_required
 @is_admin
