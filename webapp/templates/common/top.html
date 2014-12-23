@@ -1,0 +1,25 @@
+<!-- Fixed navbar -->
+<div class="navbar navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-logo" href="/">Fainle</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            {% if 'tree' in request.path -%}
+            {% set tree_class="active" -%}
+            {% elif 'all' in request.path -%}
+            {% set all_class="active" -%}
+            {% elif 'list' in request.path -%}
+            {% set list_class="active" -%}
+            {% else -%}
+            {% set index_class="active" -%}
+            {% endif -%}
+            <ul class="nav navbar-nav">
+                <li class="{{index_class}}"><a href="/">首页</a></li>
+                <li class="{{all_class}}"><a href="/topic/all">导航</a></li>
+                <li class="{{tree_class}}"><a href="/knowledge/tree">知识树</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
