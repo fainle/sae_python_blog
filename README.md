@@ -7,9 +7,14 @@ Based on the simple use of the sae python and flask
 
 ###user python package
 
-flask
-jijia2
-markdown
-markupsafe
-sqlalchemy
-flask-sqlalchemy
+>flask
+
+>jijia2
+
+>markdown
+
+>markupsafe
+
+>sqlalchemy
+
+>flask-sqlalchemy
