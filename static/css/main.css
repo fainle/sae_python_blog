@@ -12,7 +12,7 @@ body, ul, li, a{
 }
 
 h1 a{
-    font-size: 24px;
+    font-size: 22px;
 }
 
 /* header */
@@ -65,4 +65,13 @@ blockquote {
     border-left: 5px solid rgba(102, 128, 153, 0.075);
     margin: 0 0 20px;
     padding: 10px 20px;
+}
+
+.dottedline{
+    border-bottom: dashed 1px #eee;
+}
+
+.line{
+    border-bottom: double 1px #eee;
+    margin: 20px 0 40px 0;
 }

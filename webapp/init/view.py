@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint
-from model import db_session, engine, Base
+from model import db_session, Base
 import hashlib
 
 
@@ -15,7 +15,8 @@ def create_db():
 	import model.topic
 	import model.admin
 
-	Base.metadata.create_all(engine)
+	# Base.metadata.create_all(engine)
+	db_session.create_all()
 	return 'create db'
 
 

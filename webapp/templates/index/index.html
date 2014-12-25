@@ -1,20 +1,37 @@
 {% extends "/layout/base.html" %}
 {% block title %}首页{% endblock %}
-{% block css %}<link href="/static/css/highlight/default.css" rel="stylesheet">{% endblock %}
+{% block css %}
+<link href="/static/css/highlight/default.css" rel="stylesheet">{% endblock %}
 {% block content %}
-{% for t in topic %}
+{% for t in paginate.items %}
 <h1><a href="/{{ t.id }}">{{ t.title }}</a></h1>
 <p class="muted">
     <small class="text-sd">发布：{{ t.created_at }}</small>
 </p>
+<div class="dottedline"></div>
 <p>{{ t.content | markdown2html(5) | safe}}</p>
 <p><a href="/topic/{{ t.id }}">查看 ({{ t.content | length }})</a></p>
-<hr />
+<div class="line"></div>
 {% endfor %}
+<nav>
+    <ul class="pager">
+        {% if paginate.has_prev %}
+            <li class="previous"><a href="/{{ paginate.prev_num }}">向前</a></li>
+        {% else %}
+            <li class="previous disabled"><a href="#">向前</a></li>
+        {% endif %}
+        <li><a href="/{{ paginate.page }}">{{ paginate.page }}</a></li>
+        {% if paginate.has_next %}
+            <li class="next"><a href="/{{ paginate.next_num }}">向后</a></li>
+        {% else %}
+            <li class="next disabled"><a href="#">向后</a></li>
+        {% endif %}
+    </ul>
+</nav>
 {% endblock %}
 {% block js %}
-	<script src="/static/js/highlight.pack.js"></script>
-	<script type="text/javascript">
-	    hljs.initHighlightingOnLoad();
-	</script>
+<script src="/static/js/highlight.pack.js"></script>
+<script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+</script>
 {% endblock js%}

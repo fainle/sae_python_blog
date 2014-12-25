@@ -12,10 +12,15 @@ def before_request():
 
 
 @index_page.route('/')
-def index():
-	topic = Topic.query.order_by(Topic.id.desc()).all()
-	category = Category.query.all()
-	return render_template('/index/index.html', category=category, topic=topic)
+@index_page.route('/<int:page>')
+def index(page=1):
+	"""
+	index page
+	:param page:
+	:return:
+	"""
+	paginate = Topic.query.paginate(page, 10, False)
+	return render_template('/index/index.html', paginate=paginate)
 
 
 @index_page.teardown_request
