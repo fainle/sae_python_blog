@@ -3,6 +3,7 @@ from flask import Flask, render_template, session, g
 from model import db_session
 from webapp.index.view import index_page
 from webapp.init.view import init_page
+from util.filter import register_jinja_filter
 
 
 app = Flask(__name__)
@@ -12,6 +13,10 @@ app.debug = True
 # register blueprint
 app.register_blueprint(index_page)
 app.register_blueprint(init_page)
+
+
+# register jijia filter
+register_jinja_filter(app.jinja_env)
 
 
 # error handler

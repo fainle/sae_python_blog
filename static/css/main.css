@@ -11,6 +11,10 @@ body, ul, li, a{
     font-size: 14px;
 }
 
+h1 a{
+    font-size: 24px;
+}
+
 /* header */
 .navbar{
     background-color: #E4EBF1;

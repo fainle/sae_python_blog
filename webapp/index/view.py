@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint, render_template
+from model.topic import Topic, Category
 
 
 index_page = Blueprint('index_page', __name__)
@@ -12,7 +13,9 @@ def before_request():
 
 @index_page.route('/')
 def index():
-	return render_template('index/index.html')
+	topic = Topic.query.order_by(Topic.id.desc()).all()
+	category = Category.query.all()
+	return render_template('/index/index.html', category=category, topic=topic)
 
 
 @index_page.teardown_request
