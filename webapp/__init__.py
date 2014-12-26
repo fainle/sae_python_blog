@@ -2,7 +2,9 @@
 from flask import Flask, render_template, session, g
 from webapp.index.view import index_page
 from webapp.init.view import init_page
+from webapp.topic.view import topic_page
 from util.filter import register_jinja_filter
+from model import db_session
 
 
 app = Flask(__name__)
@@ -12,6 +14,7 @@ app.debug = True
 # register blueprint
 app.register_blueprint(index_page)
 app.register_blueprint(init_page)
+app.register_blueprint(topic_page)
 
 
 # register jijia filter
@@ -40,3 +43,5 @@ def shutdown_session(exception=None):
 	"""
 	teardown request
 	"""
+	db_session.session.rollback()
+	db_session.session.close()

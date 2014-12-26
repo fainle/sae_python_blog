@@ -19,6 +19,9 @@ def index(page=1):
 	:param page:
 	:return:
 	"""
+	if page <= 0:
+		page = 1
+
 	paginate = Topic.query.paginate(page, 10, False)
 	return render_template('/index/index.html', paginate=paginate)
 

@@ -4,7 +4,7 @@
 <link href="/static/css/highlight/default.css" rel="stylesheet">{% endblock %}
 {% block content %}
 {% for t in paginate.items %}
-<h1><a href="/{{ t.id }}">{{ t.title }}</a></h1>
+<h1><a href="/topic/{{ t.id }}">{{ t.title }}</a></h1>
 <p class="muted">
     <small class="text-sd">发布：{{ t.created_at }}</small>
 </p>

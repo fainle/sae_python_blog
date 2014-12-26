@@ -9,6 +9,9 @@ db_link = 'mysql+mysqldb://' + sae.const.MYSQL_USER + ':' + sae.const.MYSQL_PASS
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_link
+app.config['SQLALCHEMY_POOL_RECYCLE'] = 10
+app.config['SQLALCHEMY_POOL_TIMEOUT'] = 10
+app.config['SQLALCHEMY_POOL_SIZE'] = 5
 
 db_session = SQLAlchemy(app)
 

@@ -26,7 +26,6 @@ class Topic(Base):
     """
     topic model
     """
-
     __tablename__ = 'topic'
 
     id = Column(Integer, primary_key=True)

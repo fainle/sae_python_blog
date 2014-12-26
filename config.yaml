@@ -1,2 +1,6 @@
 name: dilan
 version: 8
+
+libraries:
+- name: flask-sqlalchemy
+  version: "0.15"
