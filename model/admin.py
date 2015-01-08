@@ -3,8 +3,11 @@ from model import Base
 from sqlalchemy import Column, Integer, String
 
 
+PREFIX = 'v2_'
+
+
 class Admin(Base):
-    __tablename__ = 'admin'
+    __tablename__ = PREFIX + 'admin'
 
     id = Column(Integer, primary_key=True)
     email = Column(String(50))

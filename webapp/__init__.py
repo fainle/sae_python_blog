@@ -9,6 +9,7 @@ from model import db_session
 
 app = Flask(__name__)
 app.debug = True
+app.secret_key = 'myverylongsecretkey'
 
 
 # register blueprint
@@ -24,6 +25,9 @@ register_jinja_filter(app.jinja_env)
 # error handler
 @app.errorhandler(404)
 def page_not_found(error):
+	"""
+	404 page not found
+	"""
 	return render_template('404.html'), 404
 
 
@@ -43,5 +47,5 @@ def shutdown_session(exception=None):
 	"""
 	teardown request
 	"""
-	db_session.session.rollback()
-	db_session.session.close()
+	db_session.rollback()
+	db_session.close()

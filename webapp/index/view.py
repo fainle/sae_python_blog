@@ -8,6 +8,10 @@ index_page = Blueprint('index_page', __name__)
 
 @index_page.before_request
 def before_request():
+	"""
+	before
+	:return:
+	"""
 	pass
 
 
@@ -22,10 +26,15 @@ def index(page=1):
 	if page <= 0:
 		page = 1
 
-	paginate = Topic.query.paginate(page, 10, False)
+	paginate = Topic.query.order_by(Topic.id.desc()).paginate(page, 10, False)
 	return render_template('/index/index.html', paginate=paginate)
 
 
 @index_page.teardown_request
 def teardown_request(exception):
+	"""
+	teardown
+	:param exception:
+	:return:
+	"""
 	pass

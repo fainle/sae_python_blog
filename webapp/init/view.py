@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint
-from model import db_session, Base
-import hashlib
+from model import db_session, db
+from hashlib import sha1
 
 
 init_page = Blueprint('init_page', __name__)
@@ -15,8 +15,7 @@ def create_db():
 	import model.topic
 	import model.admin
 
-	# Base.metadata.create_all(engine)
-	db_session.create_all()
+	db.create_all()
 	return 'create db'
 
 
@@ -27,12 +26,8 @@ def init_data():
 	"""
 	from model.admin import Admin
 
-	sha1 = hashlib.sha1()
-	sha1.update('123456')
-
 	user = Admin("hehehas@gmail.com")
-	user.nickname = 'fainle'
-	user.password = sha1.hexdigest()
+	user.password = sha1('123456').hexdigest()
 
 	db_session.add(user)
 	db_session.commit()

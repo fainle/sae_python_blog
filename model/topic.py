@@ -4,14 +4,16 @@ from sqlalchemy.orm import relationship, backref
 from model import Base, timestamp_mixin
 
 
+PREFIX = 'v2_'  # table prefix
+
+
 class Category(Base):
     """
     Category model
     """
-    __tablename__ = 'topic_category'
+    __tablename__ = PREFIX + 'topic_category'
     id = Column(Integer, primary_key=True)
     name = Column(String(20), default='')
-    content = Column(Text)
     num = Column(Integer, default=0)
 
     def __init__(self, name):
@@ -26,7 +28,7 @@ class Topic(Base):
     """
     topic model
     """
-    __tablename__ = 'topic'
+    __tablename__ = PREFIX + 'topic'
 
     id = Column(Integer, primary_key=True)
     title = Column(String(80))
@@ -34,9 +36,7 @@ class Topic(Base):
     category_id = Column(Integer, default=0)
     priority = Column(Integer, default=0)
     tag = Column(String(200), default='')
-
-    #one to one
-    count = relationship('TopicCount', lazy=True, uselist=False, backref='topic')
+    count = relationship('TopicCount', lazy=True, uselist=False, backref='topic')  # one to one
 
     def __init__(self, title):
         self.title = title
@@ -51,10 +51,9 @@ class TopicTag(Base):
     topic tag model
     """
 
-    __tablename__ = 'topic_tag'
+    __tablename__ = PREFIX + 'topic_tag'
     id = Column(Integer, primary_key=True)
     name = Column(String(20), default='')
-    content = Column(Text)
     num = Column(Integer, default=0)
 
     def __init__(self, name):
@@ -70,9 +69,9 @@ class TopicCount(Base):
     topic count
     """
 
-    __tablename__ = 'topic_count'
+    __tablename__ = PREFIX + 'topic_count'
     id = Column(Integer, primary_key=True)
-    topic_id = Column(Integer, ForeignKey('topic.id'))
+    topic_id = Column(Integer, ForeignKey(PREFIX + 'topic.id'))
     views = Column(Integer, default=0)
     reply_num = Column(Integer, default=0)
 
@@ -81,7 +80,7 @@ class TopicToTag(Base):
     """
     topic and tag relationships
     """
-    __tablename__ = 'topic_tag_relationships'
+    __tablename__ = PREFIX + 'topic_tag_relationships'
     id = Column(Integer, primary_key=True)
     topic_id = Column(Integer, default=0)
     tag_id = Column(Integer, default=0)
@@ -96,7 +95,7 @@ class TopicReply(Base):
     """
     topic reply
     """
-    __tablename__ = 'topic_reply'
+    __tablename__ = PREFIX + 'topic_reply'
     id = Column(Integer, primary_key=True)
     topic_id = Column(Integer, default=0)
     user_id = Column(Integer, default=0)

@@ -3,31 +3,43 @@
 {% block css %}
 <link href="/static/css/highlight/default.css" rel="stylesheet">{% endblock %}
 {% block content %}
-{% for t in paginate.items %}
-<h1><a href="/topic/{{ t.id }}">{{ t.title }}</a></h1>
-<p class="muted">
-    <small class="text-sd">发布：{{ t.created_at }}</small>
-</p>
-<div class="dottedline"></div>
-<p>{{ t.content | markdown2html(5) | safe}}</p>
-<p><a href="/topic/{{ t.id }}">查看 ({{ t.content | length }})</a></p>
-<div class="line"></div>
-{% endfor %}
-<nav>
-    <ul class="pager">
-        {% if paginate.has_prev %}
-            <li class="previous"><a href="/{{ paginate.prev_num }}">向前</a></li>
-        {% else %}
-            <li class="previous disabled"><a href="#">向前</a></li>
+<div class="row">
+    <div class="col-md-8">
+        {% for t in paginate.items %}
+        <h1><a href="/topic/{{ t.id }}">{{ t.title }}</a></h1>
+        <p class="muted">
+            <small class="text-sd">浏览：{{ t.count.views }}</small>
+            <small class="text-sd">发布：{{ t.created_at }}</small>
+        </p>
+        <div class="dottedline"></div>
+        <p>{{ t.content | markdown2html(5) | safe}}</p>
+        <p><a href="/topic/{{ t.id }}">查看 ({{ t.content | length }})</a></p>
+        <div class="line"></div>
+        {%else%}
+        <p>没有文章</p>
+        {% endfor %}
+        {% if paginate.items %}
+        <nav>
+            <ul class="pager">
+                {% if paginate.has_prev %}
+                <li class="previous"><a href="/{{ paginate.prev_num }}">向前</a></li>
+                {% else %}
+                <li class="previous disabled"><a href="#">向前</a></li>
+                {% endif %}
+                <li><a href="/{{ paginate.page }}">{{ paginate.page }}</a></li>
+                {% if paginate.has_next %}
+                <li class="next"><a href="/{{ paginate.next_num }}">向后</a></li>
+                {% else %}
+                <li class="next disabled"><a href="#">向后</a></li>
+                {% endif %}
+            </ul>
+        </nav>
         {% endif %}
-        <li><a href="/{{ paginate.page }}">{{ paginate.page }}</a></li>
-        {% if paginate.has_next %}
-            <li class="next"><a href="/{{ paginate.next_num }}">向后</a></li>
-        {% else %}
-            <li class="next disabled"><a href="#">向后</a></li>
-        {% endif %}
-    </ul>
-</nav>
+    </div>
+    <div class="col-md-4">
+        <h1><a href="">分类</a></h1>
+    </div>
+</div>
 {% endblock %}
 {% block js %}
 <script src="/static/js/highlight.pack.js"></script>

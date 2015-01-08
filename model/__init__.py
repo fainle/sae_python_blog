@@ -13,9 +13,10 @@ app.config['SQLALCHEMY_POOL_RECYCLE'] = 10
 app.config['SQLALCHEMY_POOL_TIMEOUT'] = 10
 app.config['SQLALCHEMY_POOL_SIZE'] = 5
 
-db_session = SQLAlchemy(app)
+db = SQLAlchemy(app)
 
-Base = db_session.Model
+Base = db.Model
+db_session = db.session
 
 
 def timestamp_mixin(cls):
